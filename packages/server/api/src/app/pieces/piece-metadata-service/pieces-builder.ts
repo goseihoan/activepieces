@@ -42,7 +42,7 @@ async function runCommandWithLiveOutput(cmd: string): Promise<void> {
     const [command, ...args] = cmd.split(' ')
 
     return new Promise<void>((resolve, reject) => {
-        const child = spawn(command, args, { stdio: 'inherit' })
+        const child = spawn(command, args, { shell: true })
 
         child.on('error', reject)
         child.on('close', code => {
